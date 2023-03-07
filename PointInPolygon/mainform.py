@@ -89,6 +89,7 @@ class Ui_MainForm(object):
         self.actionPoint_and_polygon_position.triggered.connect(self.analyzeClick)
         self.actionOpen.triggered.connect(self.open)
         self.actionExit.triggered.connect(self.exit)
+        self.actionClear.triggered.connect(self.clear)
 
         self.retranslateUi(MainForm)
         QtCore.QMetaObject.connectSlotsByName(MainForm)
@@ -152,6 +153,9 @@ class Ui_MainForm(object):
 
     def exit(self):
         quit()
+
+    def clear(self):
+        self.Canvas.repaint()
 
 if __name__ == "__main__":
     import sys
