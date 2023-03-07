@@ -41,7 +41,7 @@ class Draw(QWidget):
     def input(self):
 
         pols = Load()
-        pols.readPol('D:\Qt_veci\cv1\PointInPolygon\TMMESTSKECASTI_P.shp')
+        pols.readPol('TMMESTSKECASTI_P.shp')
         #print('Ano')
         for pl in range(57):
             self.__pol.clear()

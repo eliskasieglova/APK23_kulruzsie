@@ -55,7 +55,7 @@ class Ui_MainForm(object):
         self.actionExit.setObjectName("actionExit")
         self.actionPoint_Polygon = QtGui.QAction(MainForm)
         self.actionPoint_Polygon.setCheckable(True)
-        self.actionPoint_Polygon.setChecked(True)
+        self.actionPoint_Polygon.setChecked(False)
         self.actionPoint_Polygon.setObjectName("actionPoint_Polygon")
         self.actionClear = QtGui.QAction(MainForm)
         icon2 = QtGui.QIcon()
@@ -88,6 +88,7 @@ class Ui_MainForm(object):
         self.actionPoint_Polygon.triggered.connect(self.switchSourceClick)
         self.actionPoint_and_polygon_position.triggered.connect(self.analyzeClick)
         self.actionOpen.triggered.connect(self.open)
+        self.actionExit.triggered.connect(self.exit)
 
         self.retranslateUi(MainForm)
         QtCore.QMetaObject.connectSlotsByName(MainForm)
@@ -148,6 +149,9 @@ class Ui_MainForm(object):
 
     def open(self):
         self.Canvas.input()
+
+    def exit(self):
+        quit()
 
 if __name__ == "__main__":
     import sys
