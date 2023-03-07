@@ -42,7 +42,6 @@ class Algorithms:
 
         n = len(pol)
         uhel = 0
-        print(pol[0].x())
 
         for i in range(n-1):
             #print(i)
@@ -75,12 +74,8 @@ class Algorithms:
                 elif xm > 0:  # bod je napravo od hrany (+)
                     uhel -= fi
             #print(i, '-', uhel, 'uhel')
-        print(uhel)
 
         if uhel > 6.2:
-            print("ano")
             return 1
 
         return 0
-
-

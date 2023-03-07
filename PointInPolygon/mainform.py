@@ -62,23 +62,33 @@ class Ui_MainForm(object):
         icon2.addPixmap(QtGui.QPixmap("icons/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionClear.setIcon(icon2)
         self.actionClear.setObjectName("actionClear")
-        self.actionPoint_and_polygon_position = QtGui.QAction(MainForm)
+
+        self.actionWindingNumber = QtGui.QAction(MainForm)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("icons/polygon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.actionPoint_and_polygon_position.setIcon(icon3)
-        self.actionPoint_and_polygon_position.setObjectName("actionPoint_and_polygon_position")
+        icon3.addPixmap(QtGui.QPixmap("icons/wn.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionWindingNumber.setIcon(icon3)
+        self.actionWindingNumber.setObjectName("actionWindingNumber")
+
+        self.actionRayCrossing = QtGui.QAction(MainForm)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/rc.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionRayCrossing.setIcon(icon3)
+        self.actionRayCrossing.setObjectName("actionRayCrossing")
+
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
         self.menuDraw.addAction(self.actionPoint_Polygon)
         self.menuDraw.addAction(self.actionClear)
-        self.menuAnalyze.addAction(self.actionPoint_and_polygon_position)
+        self.menuAnalyze.addAction(self.actionRayCrossing)
+        self.menuAnalyze.addAction(self.actionWindingNumber)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuDraw.menuAction())
         self.menubar.addAction(self.menuAnalyze.menuAction())
         self.toolBar.addAction(self.actionOpen)
         self.toolBar.addSeparator()
-        self.toolBar.addAction(self.actionPoint_and_polygon_position)
+        self.toolBar.addAction(self.actionRayCrossing)
+        self.toolBar.addAction(self.actionWindingNumber)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionClear)
         self.toolBar.addSeparator()
@@ -86,7 +96,8 @@ class Ui_MainForm(object):
 
         # Connect menu item and function
         self.actionPoint_Polygon.triggered.connect(self.switchSourceClick)
-        self.actionPoint_and_polygon_position.triggered.connect(self.analyzeClick)
+        self.actionRayCrossing.triggered.connect(self.analyzeClickR)
+        self.actionWindingNumber.triggered.connect(self.analyzeClickW)
         self.actionOpen.triggered.connect(self.open)
         self.actionExit.triggered.connect(self.exit)
         self.actionClear.triggered.connect(self.clear)
@@ -105,8 +116,10 @@ class Ui_MainForm(object):
         self.actionExit.setText(_translate("MainForm", "Exit"))
         self.actionPoint_Polygon.setText(_translate("MainForm", "Point/Polygon"))
         self.actionClear.setText(_translate("MainForm", "Clear"))
-        self.actionPoint_and_polygon_position.setText(_translate("MainForm", "Point and polygon position"))
-        self.actionPoint_and_polygon_position.setShortcut(_translate("MainForm", "Ctrl+A"))
+        self.actionRayCrossing.setText(_translate("MainForm", "Ray crossing method"))
+        self.actionRayCrossing.setShortcut(_translate("MainForm", "Ctrl+R"))
+        self.actionWindingNumber.setText(_translate("MainForm", "Winding number method"))
+        self.actionWindingNumber.setShortcut(_translate("MainForm", "Ctrl+W"))
 
 
 
@@ -114,7 +127,7 @@ class Ui_MainForm(object):
         # Change source
         self.Canvas.switchSource()
 
-    def analyzeClick(self):
+    def analyzeClickR(self):
         #Analyze point and position
 
         #Get point and polygon
@@ -129,6 +142,40 @@ class Ui_MainForm(object):
         #Analyze position
 
             res = a.getPointPolygonPositionR(q, pol)
+            #print("ano")
+
+            if res == 1:
+                self.Canvas.polsNew.append(pol)
+                self.Canvas.repaint()
+                self.Canvas.polsNew.pop(0)
+                break
+
+        #Print results
+        #dialog = QtWidgets.QMessageBox()
+        #dialog.setWindowTitle("Result of analysis")
+
+        #if res == 1:
+         #   dialog.setText("Inside")
+        #else:
+         #   dialog.setText("Outside")
+
+        #dialog.exec()
+
+    def analyzeClickW(self):
+        #Analyze point and position
+
+        #Get point and polygon
+        q = self.Canvas.getPoint()
+        a = Algorithms()
+        res = 0
+        pol = 0
+
+        for p in range(57):
+            pol = self.Canvas.getPolygon(p)
+
+        #Analyze position
+
+            res = a.getPointPolygonPositionW(q, pol)
             #print("ano")
 
             if res == 1:
