@@ -55,7 +55,7 @@ class Ui_MainForm(object):
         self.actionExit.setObjectName("actionExit")
         self.actionPoint_Polygon = QtGui.QAction(MainForm)
         self.actionPoint_Polygon.setCheckable(True)
-        self.actionPoint_Polygon.setChecked(False)
+        self.actionPoint_Polygon.setChecked(True)
         self.actionPoint_Polygon.setObjectName("actionPoint_Polygon")
         self.actionClear = QtGui.QAction(MainForm)
         icon2 = QtGui.QIcon()
