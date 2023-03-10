@@ -211,7 +211,6 @@ class Ui_MainForm(object):
                 self.Canvas.repaint()
                 corner = True
 
-
         # Print results
         if corner:
             border = False

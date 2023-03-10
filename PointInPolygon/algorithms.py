@@ -62,30 +62,42 @@ class Algorithms:
             if xir == 0 and yir == 0:
                 return 3
 
-            xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
-
             scalar = xir * xi1r + yir * yi1r
 
             length = (xir ** 2 + yir ** 2) ** (1 / 2) * (xi1r ** 2 + yi1r ** 2) ** (1 / 2)
 
             fi = np.arccos(scalar / length)
 
-            if fi > 3.14:
+            if fi >= 3.14:
                 return 2
 
-            if pol[i].y() > pol[(i + 1) % n].y():  # orientace hrany je nahoru
+            if yir == yi1r:
+                if xir < xi1r:
+                    uhel += fi
+                if xir > xi1r:
+                    uhel -= fi
+            else:
+                xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
+
+            if yir > yi1r:  # orientace hrany je nahoru
                 if xm > 0:  # bod je nalevo od hrany ve smeru orientace (+)
                     uhel += fi
                 elif xm < 0:  # bod je napravo od hrany (-)
                     uhel -= fi
+                elif xm == 0:
+                    return 2
 
-            elif pol[i].y() < pol[(i + 1) % n].y():  # orientace hrany je dolu
+            elif yir < yi1r:  # orientace hrany je dolu
                 if xm < 0:  # bod je nalevo od hrany (+)
                     uhel += fi
                 elif xm > 0:  # bod je napravo od hrany (-)
                     uhel -= fi
+                elif xm == 0:
+                    return 2
 
-        if uhel > 6.2:
+
+
+        if uhel >= 6.28:
             return 1
 
         return 0
