@@ -135,6 +135,8 @@ class Ui_MainForm(object):
         a = Algorithms()
         res = 0
         pol = 0
+        border = False
+        corner = False
 
         for p in range(57):
             pol = self.Canvas.getPolygon(p)
@@ -147,30 +149,31 @@ class Ui_MainForm(object):
             if res == 1:
                 self.Canvas.polsNew.append(pol)
                 self.Canvas.repaint()
-                break
 
             if res == 2:
                 self.Canvas.polsNew.append(pol)
                 self.Canvas.repaint()
-                if len(self.Canvas.polsNew) == 2:
-                    break
-
+                border = True
             if res == 3:
                 self.Canvas.polsNew.append(pol)
                 self.Canvas.repaint()
-                break
+                corner = True
+
         #Print results
-        if res == 2:
+        if corner:
+            border = False
+            dialog = QtWidgets.QMessageBox()
+            dialog.setWindowTitle("Warning")
+            dialog.setText("On the corner")
+            dialog.exec()
+
+        if border:
             dialog = QtWidgets.QMessageBox()
             dialog.setWindowTitle("Warning")
             dialog.setText("On the border")
             dialog.exec()
 
-        if res == 3:
-            dialog = QtWidgets.QMessageBox()
-            dialog.setWindowTitle("Warning")
-            dialog.setText("On the corner")
-            dialog.exec()
+
 
 
 
