@@ -21,6 +21,10 @@ class Algorithms:
             xi1r = pol[(i+1)%n].x() - q.x()
             yi1r = pol[(i+1)%n].y() - q.y()
 
+            #is on the corner
+            if xir == 0 and yir == 0:
+                return 3
+
             #Suitable segment
             if (yi1r > 0) and (yir <= 0) or (yir > 0) and (yi1r <= 0):  # lezi mezi y-sourad
 
@@ -34,7 +38,7 @@ class Algorithms:
                 elif xm < 0:
                     kl += 1
                 elif xm == 0:
-                    return -1
+                    return 2
         #same amount of intersections on left and right
         if kr%2 == kl%2:
             # point is inside
