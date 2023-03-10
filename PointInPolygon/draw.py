@@ -50,7 +50,7 @@ class Draw(QWidget):
             for i in range(len(xy)):
                 if self.__add_vertex:
                     # Create point
-                    p = QPointF((xy[i].x() - 14) * 1000, 300 - (xy[i].y() - 50) * 1000)
+                    p = QPointF((xy[i].x() - 14) * 642, 300 - (xy[i].y() - 50) * 1000)
 
                     # Append p to polygon
                     self.__pol.append(p)
