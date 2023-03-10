@@ -9,7 +9,8 @@ class Algorithms:
         pass
 
     def getPointPolygonPositionR(self, q, pol):
-        k = 0  # pocet pruseciku paprsku a hran
+        kr = 0  # pocet pruseciku paprsku a hran na prave strane
+        kl = 0  # leva strana
         n = len(pol)
 
         # proces all vertices
@@ -25,16 +26,23 @@ class Algorithms:
 
                 #compute intersection
                 xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
+
                 #print(xm)
                 # increment amount of intersections
                 if xm > 0:
-                    k += 1
+                    kr += 1
+                elif xm < 0:
+                    kl += 1
                 elif xm == 0:
                     return -1
-
-        # point is inside
-        if k % 2 == 1:
-            return 1
+        #same amount of intersections on left and right
+        if kr%2 == kl%2:
+            # point is inside
+            if kr % 2 == 1:
+                return 1
+        #point is on the border
+        else:
+            return 2
 
         return 0
 

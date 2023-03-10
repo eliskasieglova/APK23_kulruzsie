@@ -144,22 +144,20 @@ class Ui_MainForm(object):
             res = a.getPointPolygonPositionR(q, pol)
             #print("ano")
 
-            if res == 1:
+            if res == 1 or res == 2:
                 self.Canvas.polsNew.append(pol)
                 self.Canvas.repaint()
-                self.Canvas.polsNew.pop(0)
-                break
 
         #Print results
-        #dialog = QtWidgets.QMessageBox()
-        #dialog.setWindowTitle("Result of analysis")
-
+        if res == 2:
+            dialog = QtWidgets.QMessageBox()
+            dialog.setWindowTitle("Werning")
+            dialog.setText("On the border")
         #if res == 1:
          #   dialog.setText("Inside")
         #else:
          #   dialog.setText("Outside")
-
-        #dialog.exec()
+            dialog.exec()
 
     def analyzeClickW(self):
         #Analyze point and position
@@ -181,8 +179,6 @@ class Ui_MainForm(object):
             if res == 1:
                 self.Canvas.polsNew.append(pol)
                 self.Canvas.repaint()
-                self.Canvas.polsNew.pop(0)
-                break
 
         #Print results
         #dialog = QtWidgets.QMessageBox()
@@ -202,7 +198,9 @@ class Ui_MainForm(object):
         quit()
 
     def clear(self):
+        self.Canvas.polsNew = []
         self.Canvas.repaint()
+
 
 if __name__ == "__main__":
     import sys
