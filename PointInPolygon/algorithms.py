@@ -40,13 +40,9 @@ class Algorithms:
                 elif xm == 0:
                     return 2
         #same amount of intersections on left and right
-        if kr%2 == kl%2:
-            # point is inside
-            if kr % 2 == 1:
+        if kr % 2 == 1:
                 return 1
         #point is on the border
-        else:
-            return 2
 
         return 0
 
