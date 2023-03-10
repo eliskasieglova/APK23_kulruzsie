@@ -59,6 +59,9 @@ class Algorithms:
             xi1r = pol[(i + 1) % n].x() - q.x()
             yi1r = pol[(i + 1) % n].y() - q.y()
 
+            if xir == 0 and yir == 0:
+                return 3
+
             xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
 
             scalar = xir * xi1r + yir * yi1r
@@ -67,11 +70,15 @@ class Algorithms:
 
             fi = np.arccos(scalar / length)
 
+            if fi > 3.14:
+                return 2
+
             if pol[i].y() > pol[(i + 1) % n].y():  # orientace hrany je nahoru
                 if xm > 0:  # bod je nalevo od hrany ve smeru orientace (+)
                     uhel += fi
                 elif xm < 0:  # bod je napravo od hrany (-)
                     uhel -= fi
+
             elif pol[i].y() < pol[(i + 1) % n].y():  # orientace hrany je dolu
                 if xm < 0:  # bod je nalevo od hrany (+)
                     uhel += fi
