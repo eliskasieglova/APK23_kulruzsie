@@ -10,7 +10,7 @@ class Algorithms:
 
     def getPointPolygonPositionR(self, q, pol):
         # initialize amount of intersections
-        kr = 0
+        k = 0
         n = len(pol)
 
         # process all vertices
@@ -33,12 +33,12 @@ class Algorithms:
 
                 # increment amount of intersections
                 if xm > 0:
-                    kr += 1
+                    k += 1
                 # point is on the border
                 elif xm == 0:
                     return 2
         # point is inside
-        if kr % 2 == 1:
+        if k % 2 == 1:
                 return 1
 
         return 0
