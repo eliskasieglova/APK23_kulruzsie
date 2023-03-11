@@ -13,7 +13,7 @@ from algorithms import *
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
         MainForm.setObjectName("MainForm")
-        MainForm.resize(800, 600)
+        MainForm.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainForm)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -137,6 +137,7 @@ class Ui_MainForm(object):
         pol = 0
         border = False
         corner = False
+        self.Canvas.polsNew.clear()
 
         for p in range(57):
             pol = self.Canvas.getPolygon(p)
@@ -144,7 +145,6 @@ class Ui_MainForm(object):
         #Analyze position
 
             res = a.getPointPolygonPositionR(q, pol)
-            #print("ano")
 
             if res == 1:
                 self.Canvas.polsNew.append(pol)
@@ -175,9 +175,6 @@ class Ui_MainForm(object):
             dialog.exec()
 
 
-
-
-
     def analyzeClickW(self):
         #Analyze point and position
 
@@ -188,6 +185,7 @@ class Ui_MainForm(object):
         pol = 0
         border = False
         corner = False
+        self.Canvas.polsNew.clear()
 
         for p in range(57):
             pol = self.Canvas.getPolygon(p)
@@ -225,16 +223,7 @@ class Ui_MainForm(object):
             dialog.setText("On the border")
             dialog.exec()
 
-        #Print results
-        #dialog = QtWidgets.QMessageBox()
-        #dialog.setWindowTitle("Result of analysis")
 
-        #if res == 1:
-         #   dialog.setText("Inside")
-        #else:
-         #   dialog.setText("Outside")
-
-        #dialog.exec()
 
     def open(self):
         self.Canvas.input()

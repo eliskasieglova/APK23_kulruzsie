@@ -9,40 +9,37 @@ class Algorithms:
         pass
 
     def getPointPolygonPositionR(self, q, pol):
-        kr = 0  # pocet pruseciku paprsku a hran na prave strane
-        kl = 0  # leva strana
+        # initialize amount of intersections
+        kr = 0
         n = len(pol)
 
-        # proces all vertices
+        # process all vertices
         for i in range(n):
-            #reduce coordinate - pocatek sourad systemu posunu do bodu q
+            # reduce coordinate
             xir = pol[i].x() - q.x()
             yir = pol[i].y() - q.y()
             xi1r = pol[(i+1)%n].x() - q.x()
             yi1r = pol[(i+1)%n].y() - q.y()
 
-            #is on the corner
+            # point is on the corner
             if xir == 0 and yir == 0:
                 return 3
 
-            #Suitable segment
-            if (yi1r > 0) and (yir <= 0) or (yir > 0) and (yi1r <= 0):  # lezi mezi y-sourad
+            # suitable segment
+            if (yi1r > 0) and (yir <= 0) or (yir > 0) and (yi1r <= 0):
 
-                #compute intersection
+                # compute intersection
                 xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
 
-                #print(xm)
                 # increment amount of intersections
                 if xm > 0:
                     kr += 1
-                elif xm < 0:
-                    kl += 1
+                # point is on the border
                 elif xm == 0:
                     return 2
-        #same amount of intersections on left and right
+        # point is inside
         if kr % 2 == 1:
                 return 1
-        #point is on the border
 
         return 0
 
@@ -50,53 +47,69 @@ class Algorithms:
 
         n = len(pol)
         uhel = 0
-        # print(pol[0].x())
 
         for i in range(n - 1):
-
             xir = pol[i].x() - q.x()
             yir = pol[i].y() - q.y()
             xi1r = pol[(i + 1) % n].x() - q.x()
             yi1r = pol[(i + 1) % n].y() - q.y()
 
+            # point is on the corner
             if xir == 0 and yir == 0:
                 return 3
 
+            # dot product
             scalar = xir * xi1r + yir * yi1r
 
+            # product of lengths of vectors from point to vertices
             length = (xir ** 2 + yir ** 2) ** (1 / 2) * (xi1r ** 2 + yi1r ** 2) ** (1 / 2)
 
+            # angle between vectors
             fi = np.arccos(scalar / length)
 
+            # point is on the border
             if fi >= 3.14:
                 return 2
 
-            if yir == yi1r:
+            # horizontal edge:
+            # point is above
+            if yir == yi1r and yir > 0:
+                # left-right orientation
                 if xir < xi1r:
                     uhel += fi
-                if xir > xi1r:
+                # right-left orientation
+                elif xir > xi1r:
                     uhel -= fi
+            # point is below
+            elif yir == yi1r and yir < 0:
+                # left-right orientation
+                if xir < xi1r:
+                    uhel -= fi
+                # right-left orientation
+                elif xir > xi1r:
+                    uhel += fi
+            # non-horizontal edge:
             else:
+                # intersection
                 xm = (xi1r * yir - xir * yi1r) / (yi1r - yir)
 
-            if yir > yi1r:  # orientace hrany je nahoru
-                if xm > 0:  # bod je nalevo od hrany ve smeru orientace (+)
+            # edge orientation is upward
+            if yir > yi1r:
+                # point is on the left from the edge
+                if xm > 0:
                     uhel += fi
-                elif xm < 0:  # bod je napravo od hrany (-)
+                # point is on the right from the edge
+                elif xm < 0:
                     uhel -= fi
-                elif xm == 0:
-                    return 2
-
-            elif yir < yi1r:  # orientace hrany je dolu
-                if xm < 0:  # bod je nalevo od hrany (+)
+            # edge orientation is downward
+            elif yir < yi1r:
+                # point is on the left from the edge
+                if xm < 0:
                     uhel += fi
-                elif xm > 0:  # bod je napravo od hrany (-)
+                # point is on the right from the edge
+                elif xm > 0:
                     uhel -= fi
-                elif xm == 0:
-                    return 2
-
-
-
+        # point is inside
         if uhel >= 6.28:
             return 1
 

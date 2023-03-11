@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import *
 
 class Draw(QWidget):
 
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -42,15 +43,15 @@ class Draw(QWidget):
 
         pols = Load()
         pols.readPol('TMMESTSKECASTI_P.shp')
-        #print('Ano')
+
         for pl in range(57):
             self.__pol.clear()
             xy = pols.xy(pl)
-            #print(xy)
+
             for i in range(len(xy)):
                 if self.__add_vertex:
                     # Create point
-                    p = QPointF((xy[i].x() - 14) * 642, 300 - (xy[i].y() - 50) * 1000)
+                    p = QPointF((xy[i].x() - 14) * 1284 - 100, 400 - (xy[i].y() - 50) * 2000)
 
                     # Append p to polygon
                     self.__pol.append(p)
@@ -60,11 +61,10 @@ class Draw(QWidget):
                     self.__q.setX(xy[i].x())
                     self.__q.setY(xy[i].y())
             self.__pols.append(QPolygonF(self.__pol))
-            #print(list(self.__pol))
+
             self.repaint()
 
     def paintEvent(self, e:QPaintEvent):
-        #Draw polygon
 
         #Create graphic object
         qp = QPainter(self)
@@ -87,7 +87,7 @@ class Draw(QWidget):
             qp.drawPolygon(self.polsNew[p])
 
         #Draw point
-        d = 1
+        d = 3
         qp.drawEllipse(int(self.__q.x() - d/2), int(self.__q.y() - d/2), d, d)
 
         #End draw

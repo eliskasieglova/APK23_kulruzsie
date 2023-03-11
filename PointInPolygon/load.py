@@ -18,17 +18,12 @@ class Load:
         for p in range(data.shape[0]):
             g = [i for i in data.geometry]
             pol = list(g[p].boundary.coords.xy)
-            #print(pol)
 
             polygon = []
             for i in range(len(pol[0])):
                 polygon.append(QPointF(pol[0][i], pol[1][i]))
-                #print(i)
 
             self.polygony.append(polygon)
-
-
-
 
     def xy(self, p):
 
