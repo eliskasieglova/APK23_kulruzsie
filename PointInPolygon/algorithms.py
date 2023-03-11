@@ -44,7 +44,7 @@ class Algorithms:
         return 0
 
     def getPointPolygonPositionW(self, q, pol):
-
+        # number of vertices in analyzed polygon
         n = len(pol)
         uhel = 0
 

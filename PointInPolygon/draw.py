@@ -9,74 +9,73 @@ class Draw(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        #Query point and polygon
+        # query point and polygon
         self.__q = QPointF(0,0)
         self.__pol = QPolygonF()
 
         self.__pols = []
         self.polsNew = []
 
-        self.__add_vertex = True
+        self.__add_vertex = False
 
     def mousePressEvent(self, e:QMouseEvent):
-        #Left mouse button click
+        # left mouse button click
         x = e.position().x()
         y = e.position().y()
 
-        #Add point to polygon
+        # add point to polygon
         if self.__add_vertex:
-            #Create point
+            # create point
             p = QPointF(x,y)
 
-            #Append p to polygon
+            # append p to polygon
             self.__pol.append(p)
 
-        #Set x,y to point
+        # set x,y to point
         else:
             self.__q.setX(x)
             self.__q.setY(y)
 
-        #Repaint screen
+        # repaint screen
         self.repaint()
 
     def input(self):
 
         pols = Load()
+        # load data
         pols.readPol('TMMESTSKECASTI_P.shp')
 
+        # process all polygons
         for pl in range(57):
             self.__pol.clear()
             xy = pols.xy(pl)
 
+            # process all vertices in analyzed polygon
             for i in range(len(xy)):
-                if self.__add_vertex:
-                    # Create point
-                    p = QPointF((xy[i].x() - 14) * 1284 - 100, 400 - (xy[i].y() - 50) * 2000)
+                # create point
+                p = QPointF((xy[i].x() - 14) * 1284 - 100, 400 - (xy[i].y() - 50) * 2000)
 
-                    # Append p to polygon
-                    self.__pol.append(p)
+                # append p to polygon
+                self.__pol.append(p)
 
-                # Set x,y to point
-                else:
-                    self.__q.setX(xy[i].x())
-                    self.__q.setY(xy[i].y())
+
             self.__pols.append(QPolygonF(self.__pol))
 
             self.repaint()
 
     def paintEvent(self, e:QPaintEvent):
 
-        #Create graphic object
+        # create graphic object
         qp = QPainter(self)
 
-        #Start draw
+        # start draw
         qp.begin(self)
 
-        #Set attributes
+        # set attributes
         qp.setPen(Qt.GlobalColor.red)
         qp.setBrush(Qt.GlobalColor.yellow)
 
-        #Draw polygon
+        # draw polygon
         for p in range(len(self.__pols)):
             qp.drawPolygon(self.__pols[p])
 
@@ -86,22 +85,22 @@ class Draw(QWidget):
         for p in range(len(self.polsNew)):
             qp.drawPolygon(self.polsNew[p])
 
-        #Draw point
+        # draw point
         d = 3
         qp.drawEllipse(int(self.__q.x() - d/2), int(self.__q.y() - d/2), d, d)
 
-        #End draw
+        # end draw
         qp.end()
 
     def switchSource(self):
-        #Move point or add vertex
+        # move point or add vertex
         self.__add_vertex = not(self.__add_vertex)
 
     def getPoint(self):
-        #Get point
+        # get point
         return self.__q
 
     def getPolygon(self, p):
-        #Get polygon
+        # get polygon
         return self.__pols[p]
 

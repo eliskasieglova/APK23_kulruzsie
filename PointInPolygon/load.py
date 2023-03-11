@@ -17,6 +17,7 @@ class Load:
 
         for p in range(data.shape[0]):
             g = [i for i in data.geometry]
+            # get x and y coordinates
             pol = list(g[p].boundary.coords.xy)
 
             polygon = []

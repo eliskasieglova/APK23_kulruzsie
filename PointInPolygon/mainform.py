@@ -124,13 +124,13 @@ class Ui_MainForm(object):
 
 
     def switchSourceClick(self):
-        # Change source
+        # change source
         self.Canvas.switchSource()
 
     def analyzeClickR(self):
-        #Analyze point and position
+        # analyze point and position
 
-        #Get point and polygon
+        # get point and polygon
         q = self.Canvas.getPoint()
         a = Algorithms()
         res = 0
@@ -142,7 +142,7 @@ class Ui_MainForm(object):
         for p in range(57):
             pol = self.Canvas.getPolygon(p)
 
-        #Analyze position
+        # analyze position
 
             res = a.getPointPolygonPositionR(q, pol)
 
@@ -160,7 +160,7 @@ class Ui_MainForm(object):
                 self.Canvas.repaint()
                 corner = True
 
-        #Print results
+        # print results
         if corner:
             border = False
             dialog = QtWidgets.QMessageBox()
@@ -176,9 +176,9 @@ class Ui_MainForm(object):
 
 
     def analyzeClickW(self):
-        #Analyze point and position
+        # analyze point and position
 
-        #Get point and polygon
+        # get point and polygon
         q = self.Canvas.getPoint()
         a = Algorithms()
         res = 0
@@ -190,10 +190,9 @@ class Ui_MainForm(object):
         for p in range(57):
             pol = self.Canvas.getPolygon(p)
 
-        #Analyze position
+        # analyze position
 
             res = a.getPointPolygonPositionW(q, pol)
-            #print("ano")
 
             if res == 1:
                 self.Canvas.polsNew.append(pol)
@@ -209,7 +208,7 @@ class Ui_MainForm(object):
                 self.Canvas.repaint()
                 corner = True
 
-        # Print results
+        # print results
         if corner:
             border = False
             dialog = QtWidgets.QMessageBox()
@@ -232,7 +231,7 @@ class Ui_MainForm(object):
         quit()
 
     def clear(self):
-        self.Canvas.polsNew = []
+        self.Canvas.polsNew.clear()
         self.Canvas.repaint()
 
 
