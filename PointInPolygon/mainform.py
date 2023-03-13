@@ -138,8 +138,8 @@ class Ui_MainForm(object):
         border = False
         corner = False
         self.Canvas.polsNew.clear()
-
-        for p in range(57):
+        n = self.Canvas.num()
+        for p in n:
             pol = self.Canvas.getPolygon(p)
 
         # analyze position
@@ -186,8 +186,9 @@ class Ui_MainForm(object):
         border = False
         corner = False
         self.Canvas.polsNew.clear()
+        n = self.Canvas.num()
 
-        for p in range(57):
+        for p in n:
             pol = self.Canvas.getPolygon(p)
 
         # analyze position
@@ -226,6 +227,7 @@ class Ui_MainForm(object):
 
     def open(self):
         self.Canvas.input()
+
 
     def exit(self):
         quit()

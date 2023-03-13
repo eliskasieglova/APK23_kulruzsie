@@ -1,7 +1,5 @@
 import numpy as np
-from PyQt6.QtGui import *
-from PyQt6.QtCore import *
-from PyQt6.QtWidgets import *
+
 
 class Algorithms:
 
@@ -18,8 +16,8 @@ class Algorithms:
             # reduce coordinate
             xir = pol[i].x() - q.x()
             yir = pol[i].y() - q.y()
-            xi1r = pol[(i+1)%n].x() - q.x()
-            yi1r = pol[(i+1)%n].y() - q.y()
+            xi1r = pol[(i+1) % n].x() - q.x()
+            yi1r = pol[(i+1) % n].y() - q.y()
 
             # point is on the corner
             if xir == 0 and yir == 0:

@@ -3,8 +3,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 
-class Draw(QWidget):
+data = 'TMMESTSKECASTI_P.shp'
 
+
+class Draw(QWidget):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -43,10 +45,10 @@ class Draw(QWidget):
 
         pols = Load()
         # load data
-        pols.readPol('TMMESTSKECASTI_P.shp')
-
+        pols.readPol(data)
+        n = pols.number(data)
         # process all polygons
-        for pl in range(57):
+        for pl in n:
             self.__pol.clear()
             xy = pols.xy(pl)
 
@@ -62,6 +64,11 @@ class Draw(QWidget):
             self.__pols.append(QPolygonF(self.__pol))
 
             self.repaint()
+
+    def num(self):
+        pols = Load()
+        n = pols.number(data)
+        return n
 
     def paintEvent(self, e:QPaintEvent):
 
