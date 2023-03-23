@@ -139,6 +139,9 @@ class Ui_MainWindow(object):
         ui.Canvas.clearAll()
         ui.Canvas.repaint()
 
+    def exit(self):
+        quit()
+
 
 if __name__ == "__main__":
     import sys
