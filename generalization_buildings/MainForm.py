@@ -89,6 +89,8 @@ class Ui_MainWindow(object):
         self.actionMinimum_Area_Enclosing_Rectangle.triggered.connect(self.simplifyERClick)
         self.actionWall_Average.triggered.connect(self.simplifyWAClick)
         self.actionClear.triggered.connect(self.clearClick)
+        self.actionClose.triggered.connect(self.close)
+        self.actionOpen.triggered.connect(self.open)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
