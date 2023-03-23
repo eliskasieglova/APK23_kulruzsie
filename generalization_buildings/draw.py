@@ -1,6 +1,11 @@
 from PyQt6.QtCore import *
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
+from load import Load
+
+data1 = 'data/bud_centrum.shp'
+data2 = 'data/bud_sidliste.shp'
+data3 = 'data/bud_vily.shp'
 
 class Draw(QWidget):
 
@@ -58,6 +63,30 @@ class Draw(QWidget):
 
         #End draw
         qp.end()
+
+    def input(self):
+
+        pols = Load()
+        # load data
+        pols.readPol(data1)
+        n = pols.number(data1)
+        # process all polygons
+        for pl in n:
+            self.__pol.clear()
+            xy = pols.xy(pl)
+
+            # process all vertices in analyzed polygon
+            for i in range(len(xy)):
+                # create point
+                p = QPointF((xy[i].x() - 14) * 1284 - 100, 400 - (xy[i].y() - 50) * 2000)
+
+                # append p to polygon
+                self.__pol.append(p)
+
+
+            self.__pols.append(QPolygonF(self.__pol))
+
+            self.repaint()
 
     def getPolygon(self):
         #Get polygon

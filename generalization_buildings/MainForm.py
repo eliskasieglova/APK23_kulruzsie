@@ -106,7 +106,7 @@ class Ui_MainWindow(object):
         #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
         self.actionClose.triggered.connect(self.close)
-        #self.actionOpen.triggered.connect(self.open)
+        self.actionOpen.triggered.connect(self.open)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -158,6 +158,9 @@ class Ui_MainWindow(object):
         #Clear all
         ui.Canvas.clearAll()
         ui.Canvas.repaint()
+
+    def open(self):
+        self.Canvas.input()
 
     def close(self):
         quit()
