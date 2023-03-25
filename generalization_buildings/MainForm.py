@@ -66,11 +66,23 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap("icons/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionClear.setIcon(icon4)
         self.actionClear.setObjectName("actionClear")
+        self.actionLongest_Edge = QtGui.QAction(MainWindow)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/le.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionLongest_Edge.setIcon(icon5)
+        self.actionLongest_Edge.setObjectName("actionLongest_Edge")
+        self.actionWeighted_Bisector = QtGui.QAction(MainWindow)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("icons/wb.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionWeighted_Bisector.setIcon(icon2)
+        self.actionWeighted_Bisector.setObjectName("actionWeighted_Bisector")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionClose)
         self.menuSimplify.addAction(self.actionMinimum_Area_Enclosing_Rectangle)
         self.menuSimplify.addAction(self.actionWall_Average)
+        self.menuSimplify.addAction(self.actionLongest_Edge)
+        self.menuSimplify.addAction(self.actionWeighted_Bisector)
         self.menuSimplify.addSeparator()
         self.menuSimplify.addAction(self.actionClear)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -79,6 +91,8 @@ class Ui_MainWindow(object):
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionMinimum_Area_Enclosing_Rectangle)
         self.toolBar.addAction(self.actionWall_Average)
+        self.toolBar.addAction(self.actionLongest_Edge)
+        self.toolBar.addAction(self.actionWeighted_Bisector)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionClear)
 
@@ -88,7 +102,11 @@ class Ui_MainWindow(object):
         #Connect signals and slots
         self.actionMinimum_Area_Enclosing_Rectangle.triggered.connect(self.simplifyERClick)
         self.actionWall_Average.triggered.connect(self.simplifyWAClick)
+        #self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
+        #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
+        self.actionClose.triggered.connect(self.close)
+        self.actionOpen.triggered.connect(self.open)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -105,6 +123,10 @@ class Ui_MainWindow(object):
         self.actionMinimum_Area_Enclosing_Rectangle.setToolTip(_translate("MainWindow", "Simplify building using Minimum Area Enclosing Rectangle"))
         self.actionWall_Average.setText(_translate("MainWindow", "Wall Average"))
         self.actionWall_Average.setToolTip(_translate("MainWindow", "Simplify building using Wall Average"))
+        self.actionLongest_Edge.setText(_translate("MainWindow", "Longest Edge"))
+        self.actionLongest_Edge.setToolTip(_translate("MainWindow", "Simplify building using Longest Edge"))
+        self.actionWeighted_Bisector.setText(_translate("MainWindow", "Weighted Bisector"))
+        self.actionWeighted_Bisector.setToolTip(_translate("MainWindow", "Simplify building using Weighted Bisector"))
         self.actionClear.setText(_translate("MainWindow", "Clear"))
         self.actionClear.setToolTip(_translate("MainWindow", "Clear results"))
 
@@ -136,6 +158,12 @@ class Ui_MainWindow(object):
         #Clear all
         ui.Canvas.clearAll()
         ui.Canvas.repaint()
+
+    def open(self):
+        self.Canvas.input()
+
+    def close(self):
+        quit()
 
 
 if __name__ == "__main__":
