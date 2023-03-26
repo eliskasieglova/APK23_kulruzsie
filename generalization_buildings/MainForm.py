@@ -8,12 +8,13 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from draw import Draw
+from load import Load
 from algorithms import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(1000, 750)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -74,8 +75,14 @@ class Ui_MainWindow(object):
         self.actionWeighted_Bisector = QtGui.QAction(MainWindow)
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("icons/wb.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.actionWeighted_Bisector.setIcon(icon2)
+        self.actionWeighted_Bisector.setIcon(icon6)
         self.actionWeighted_Bisector.setObjectName("actionWeighted_Bisector")
+        self.actionGraham_Scan = QtGui.QAction(MainWindow)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("icons/wb.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionGraham_Scan.setIcon(icon7)
+        self.actionGraham_Scan.setObjectName("actionGraham_Scan")
+
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionClose)
@@ -83,6 +90,7 @@ class Ui_MainWindow(object):
         self.menuSimplify.addAction(self.actionWall_Average)
         self.menuSimplify.addAction(self.actionLongest_Edge)
         self.menuSimplify.addAction(self.actionWeighted_Bisector)
+        self.menuSimplify.addAction(self.actionGraham_Scan)
         self.menuSimplify.addSeparator()
         self.menuSimplify.addAction(self.actionClear)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -93,6 +101,7 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionWall_Average)
         self.toolBar.addAction(self.actionLongest_Edge)
         self.toolBar.addAction(self.actionWeighted_Bisector)
+        self.toolBar.addAction(self.actionGraham_Scan)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionClear)
 
@@ -100,14 +109,14 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         #Connect signals and slots
-        self.actionMinimum_Area_Enclosing_Rectangle.triggered.connect(self.simplifyERClick)
-        self.actionWall_Average.triggered.connect(self.simplifyWAClick)
+        self.actionMinimum_Area_Enclosing_Rectangle.triggered.connect(self.createMAER)
+        self.actionWall_Average.triggered.connect(self.createWA)
+        self.actionGraham_Scan.triggered.connect(self.createCHGS)
         #self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
         #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
         self.actionClose.triggered.connect(self.close)
         self.actionOpen.triggered.connect(self.open)
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Building simplify"))
@@ -127,37 +136,92 @@ class Ui_MainWindow(object):
         self.actionLongest_Edge.setToolTip(_translate("MainWindow", "Simplify building using Longest Edge"))
         self.actionWeighted_Bisector.setText(_translate("MainWindow", "Weighted Bisector"))
         self.actionWeighted_Bisector.setToolTip(_translate("MainWindow", "Simplify building using Weighted Bisector"))
+        self.actionGraham_Scan.setText(_translate("MainWindow", "Graham Scan"))
+        self.actionGraham_Scan.setToolTip(_translate("MainWindow", "Create convex hull using Graham Scan"))
         self.actionClear.setText(_translate("MainWindow", "Clear"))
         self.actionClear.setToolTip(_translate("MainWindow", "Clear results"))
 
-    def simplifyERClick (self):
-        #Get polygon
-        pol = ui.Canvas.getPolygon()
 
-        #Create convex hull
+    def createMAER(self):
         a = Algorithms()
-        er = a.minAreaEnclosingRectangle(pol)
 
-        #Set results and repaint
-        ui.Canvas.setER(er)
-        ui.Canvas.repaint()
+        self.Canvas.polRes.clear()
 
-    def simplifyWAClick (self):
-        #Get polygon
-        pol = ui.Canvas.getPolygon()
+        if not self.Canvas.polisEmpty():
+            pol = a.minAreaEnclosingRectangle(self.Canvas.getPolygon())
 
-        #Create convex hull
+            self.Canvas.polRes.append(pol)
+
+        for p in self.Canvas.data.number():
+            pol = a.minAreaEnclosingRectangle(self.Canvas.data.getPol(p))
+
+            self.Canvas.polRes.append(pol)
+
+        self.Canvas.repaint()
+
+    def createWA(self):
         a = Algorithms()
-        er = a.wallAverage(pol)
 
-        #Set results and repaint
-        ui.Canvas.setER(er)
-        ui.Canvas.repaint()
+        self.Canvas.polRes.clear()
+
+        if not self.Canvas.polisEmpty():
+            pol = a.wallAverage(self.Canvas.getPolygon())
+
+            self.Canvas.polRes.append(pol)
+
+        for p in self.Canvas.data.number():
+            pol = a.wallAverage(self.Canvas.data.getPol(p))
+
+            self.Canvas.polRes.append(pol)
+
+        self.Canvas.repaint()
+
+    def createCHGS(self):
+        a = Algorithms()
+
+        self.Canvas.polRes.clear()
+
+        if not self.Canvas.polisEmpty():
+            pol = a.createCHGS(self.Canvas.getPolygon())  # a.minAreaEnclosingRectangle(self.Canvas.getPolygon())
+
+            self.Canvas.polRes.append(pol)
+
+        for p in self.Canvas.data.number():
+            pol = a.createCHGS(self.Canvas.data.getPol(p))  # a.minAreaEnclosingRectangle(self.Canvas.getPolygon())
+
+            self.Canvas.polRes.append(pol)
+
+        self.Canvas.repaint()
+
+    # def simplifyERClick (self):
+    #     #Get polygon
+    #     pol = ui.Canvas.getPolygon()
+    #
+    #     #Create convex hull
+    #     a = Algorithms()
+    #     er = a.minAreaEnclosingRectangle(pol)
+    #
+    #     #Set results and repaint
+    #     ui.Canvas.setER(er)
+    #     ui.Canvas.repaint()
+
+    # def simplifyWAClick (self):
+    #     #Get polygon
+    #     pol = ui.Canvas.getPolygon()
+    #
+    #     #Create convex hull
+    #     a = Algorithms()
+    #     er = a.wallAverage(pol)
+    #
+    #     #Set results and repaint
+    #     ui.Canvas.setER(er)
+    #     ui.Canvas.repaint()
 
     def clearClick(self):
         #Clear all
         ui.Canvas.clearAll()
         ui.Canvas.repaint()
+
 
     def open(self):
         self.Canvas.input()

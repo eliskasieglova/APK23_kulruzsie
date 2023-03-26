@@ -80,7 +80,7 @@ class Algorithms:
             # Find suitable point maximizing angle
             for i in range(len(pol)):
 
-                if pj != pol[i]:
+                if pj != pol[i] and pj1 != pol[i]:
                     # Measure angle
                     phi = self.get2LinesAngle(pj, pj1, pj, pol[i])
 
@@ -102,6 +102,90 @@ class Algorithms:
 
         return ch
 
+    def createCHGS(self, pol: QPolygonF):
+        # Convex hull using Graham scan
+        sorted = []
+
+        # Find pivot
+        q = min(pol, key=lambda k: k.y())
+
+        pj1 = QPointF(q.x() - 1, q.y())
+        pj = q
+
+        Q = [1] * len(pol)
+        sorted.append(q)
+
+        i_max = -1
+        # For each vertex of polygon
+        for n in range(len(pol) - 1):
+            phi_max = 0
+            # For all other vertices
+            for i in range(len(pol)):
+                if (pj != pol[i]) and (Q[i] == 1):
+                    phi = self.get2LinesAngle(pj, pj1, pj, pol[i])
+
+                    if phi > phi_max:
+                        phi_max = phi
+                        i_max = i
+
+            sorted.append(pol[i_max])
+            Q[i_max] = 0
+        j = 2
+        while j < (len(sorted)):
+            print(j)
+            dx = (sorted[j - 1].x() - sorted[j - 2].x())
+            dy = (sorted[j - 1].y() - sorted[j - 2].y())
+
+            if dx != 0:
+                a = dy / dx
+                b = sorted[j - 1].y() - a * sorted[j - 1].x()
+
+                if dy * a > 0:
+                    print('1')
+                    if sorted[j].y() > (a * sorted[j].x() + b):
+                        j += 1
+                    else:
+                        sorted.pop(j - 1)
+                        j -= 1
+                elif dy * a < 0:
+                    print('2')
+                    if sorted[j].y() < (a * sorted[j].x() + b):
+                        j += 1
+                    else:
+                        sorted.pop(j - 1)
+                        j -= 1
+                else:
+                    print('else 1')
+                    if dx > 0:
+                        if sorted[j].y() > sorted[j - 1].y():
+                            j += 1
+                        else:
+                            sorted.pop(j - 1)
+                            j -= 1
+                    elif dx < 0:
+                        if sorted[j].y() < sorted[j - 1].y():
+                            j += 1
+                        else:
+                            sorted.pop(j - 1)
+                            j -= 1
+            else:
+                print('else 2')
+                if dy > 0:
+                    print('else 2-1')
+                    if sorted[j].x() < sorted[j - 1].x():
+                        j += 1
+                    else:
+                        sorted.pop(j - 1)
+                        j -= 1
+                elif dy < 0:
+                    print('else 2-2')
+                    if sorted[j].x() > sorted[j - 1].x():
+                        j += 1
+                    else:
+                        sorted.pop(j - 1)
+                        j -= 1
+        return QPolygonF(sorted)
+
 
     def rotate(self, pol:QPolygonF, sig:float)->QPolygonF:
         #Rotate polygon according to a given angle
@@ -121,7 +205,6 @@ class Algorithms:
             pol_rot.append(vertex)
 
         return pol_rot
-
 
     def minMaxBox (self, pol: QPolygonF):
         #Create minmax box
