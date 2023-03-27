@@ -121,6 +121,7 @@ class Draw(QWidget):
     def clearAll(self):
         self.__pol.clear()
         self.polRes.clear()
+        self.polLoad.clear()
         #self.__er.clear()
 
     def polisEmpty(self):
