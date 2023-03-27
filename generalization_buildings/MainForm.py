@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         self.actionWeighted_Bisector.setObjectName("actionWeighted_Bisector")
         self.actionGraham_Scan = QtGui.QAction(MainWindow)
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("icons/wb.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap("icons/gs.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionGraham_Scan.setIcon(icon7)
         self.actionGraham_Scan.setObjectName("actionGraham_Scan")
 
