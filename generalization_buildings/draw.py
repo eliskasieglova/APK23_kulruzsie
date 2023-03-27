@@ -3,9 +3,6 @@ from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 from load import Load
 
-data1 = 'data\\bud_centrum.shp'
-data2 = 'data\\bud_sidliste.shp'
-data3 = 'data\\bud_vily.shp'
 
 class Draw(QWidget):
 
@@ -77,8 +74,8 @@ class Draw(QWidget):
         #End draw
         qp.end()
 
-    def input(self):
-        self.data = Load(data1)
+    def input(self, path):
+        self.data = Load(path)
         self.data.readPol()
 
         for p in self.data.number():
@@ -121,7 +118,13 @@ class Draw(QWidget):
     def clearAll(self):
         self.__pol.clear()
         self.polRes.clear()
-        #self.__er.clear()
+
+    def clearLoadedData(self):
+        self.polLoad.clear()
+        self.repaint()
+        self.__pol.clear()
+        self.polRes.clear()
+
 
     def polisEmpty(self):
         if self.__pol:

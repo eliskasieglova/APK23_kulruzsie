@@ -11,6 +11,10 @@ from draw import Draw
 from load import Load
 from algorithms import *
 
+data1 = 'data\\bud_centrum.shp'
+data2 = 'data\\bud_sidliste.shp'
+data3 = 'data\\bud_vily.shp'
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -42,11 +46,24 @@ class Ui_MainWindow(object):
         self.toolBar = QtWidgets.QToolBar(MainWindow)
         self.toolBar.setObjectName("toolBar")
         MainWindow.addToolBar(QtCore.Qt.ToolBarArea.TopToolBarArea, self.toolBar)
-        self.actionOpen = QtGui.QAction(MainWindow)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/open_file.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.actionOpen.setIcon(icon)
-        self.actionOpen.setObjectName("actionOpen")
+        self.actionOpenCenter = QtGui.QAction(MainWindow)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap("icons/open_center.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionOpenCenter.setIcon(icon8)
+        self.actionOpenCenter.setObjectName("actionOpenCenter")
+
+        self.actionOpenVilla = QtGui.QAction(MainWindow)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap("icons/open_villa.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionOpenVilla.setIcon(icon9)
+        self.actionOpenVilla.setObjectName("actionOpenVilla")
+
+        self.actionOpenUrban = QtGui.QAction(MainWindow)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap("icons/open_urban.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionOpenUrban.setIcon(icon10)
+        self.actionOpenUrban.setObjectName("actionOpenUrban")
+
         self.actionClose = QtGui.QAction(MainWindow)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("icons/exit.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -82,8 +99,16 @@ class Ui_MainWindow(object):
         icon7.addPixmap(QtGui.QPixmap("icons/gs.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.actionGraham_Scan.setIcon(icon7)
         self.actionGraham_Scan.setObjectName("actionGraham_Scan")
+        self.actionClearData = QtGui.QAction(MainWindow)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap("icons/clear_data.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.actionClearData.setIcon(icon11)
+        self.actionClearData.setObjectName("actionClearData")
 
-        self.menuFile.addAction(self.actionOpen)
+
+        self.menuFile.addAction(self.actionOpenCenter)
+        self.menuFile.addAction(self.actionOpenVilla)
+        self.menuFile.addAction(self.actionOpenUrban)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionClose)
         self.menuSimplify.addAction(self.actionMinimum_Area_Enclosing_Rectangle)
@@ -93,9 +118,12 @@ class Ui_MainWindow(object):
         self.menuSimplify.addAction(self.actionGraham_Scan)
         self.menuSimplify.addSeparator()
         self.menuSimplify.addAction(self.actionClear)
+        self.menuSimplify.addAction(self.actionClearData)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuSimplify.menuAction())
-        self.toolBar.addAction(self.actionOpen)
+        self.toolBar.addAction(self.actionOpenCenter)
+        self.toolBar.addAction(self.actionOpenVilla)
+        self.toolBar.addAction(self.actionOpenUrban)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionMinimum_Area_Enclosing_Rectangle)
         self.toolBar.addAction(self.actionWall_Average)
@@ -104,6 +132,7 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionGraham_Scan)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionClear)
+        self.toolBar.addAction(self.actionClearData)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -115,17 +144,26 @@ class Ui_MainWindow(object):
         #self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
         #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
+        self.actionClearData.triggered.connect(self.clearData)
         self.actionClose.triggered.connect(self.close)
-        self.actionOpen.triggered.connect(self.open)
+        self.actionOpenCenter.triggered.connect(self.openCenter)
+        self.actionOpenVilla.triggered.connect(self.openVilla)
+        self.actionOpenUrban.triggered.connect(self.openUrban)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Building simplify"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuSimplify.setTitle(_translate("MainWindow", "Simplify"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
-        self.actionOpen.setText(_translate("MainWindow", "Open"))
-        self.actionOpen.setToolTip(_translate("MainWindow", "Open file"))
-        self.actionOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
+        self.actionOpenCenter.setText(_translate("MainWindow", "Open center"))
+        self.actionOpenCenter.setToolTip(_translate("MainWindow", "Open file with city center"))
+        self.actionOpenCenter.setShortcut(_translate("MainWindow", "Ctrl+O"))
+        self.actionOpenVilla.setText(_translate("MainWindow", "Open residential"))
+        self.actionOpenVilla.setToolTip(_translate("MainWindow", "Open  with residential quarter"))
+        self.actionOpenVilla.setShortcut(_translate("MainWindow", "Ctrl+I"))
+        self.actionOpenUrban.setText(_translate("MainWindow", "Open flats"))
+        self.actionOpenUrban.setToolTip(_translate("MainWindow", "Open file with blocks of flats"))
+        self.actionOpenUrban.setShortcut(_translate("MainWindow", "Ctrl+U"))
         self.actionClose.setText(_translate("MainWindow", "Exit"))
         self.actionClose.setToolTip(_translate("MainWindow", "Close application"))
         self.actionMinimum_Area_Enclosing_Rectangle.setText(_translate("MainWindow", "Minimum Area Enclosing Rectangle"))
@@ -140,6 +178,8 @@ class Ui_MainWindow(object):
         self.actionGraham_Scan.setToolTip(_translate("MainWindow", "Create convex hull using Graham Scan"))
         self.actionClear.setText(_translate("MainWindow", "Clear"))
         self.actionClear.setToolTip(_translate("MainWindow", "Clear results"))
+        self.actionClearData.setText(_translate("MainWindow", "Clear data"))
+        self.actionClearData.setToolTip(_translate("MainWindow", "Clear all data"))
 
 
     def createMAER(self):
@@ -222,9 +262,20 @@ class Ui_MainWindow(object):
         ui.Canvas.clearAll()
         ui.Canvas.repaint()
 
+    def clearData(self):
+        ui.Canvas.clearLoadedData()
+        ui.Canvas.clearAll()
+        ui.Canvas.repaint()
 
-    def open(self):
-        self.Canvas.input()
+
+    def openCenter(self):
+        self.Canvas.input(data1)
+
+    def openVilla(self):
+        self.Canvas.input(data3)
+
+    def openUrban(self):
+        self.Canvas.input(data2)
 
     def close(self):
         quit()
