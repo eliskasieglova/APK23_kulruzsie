@@ -77,8 +77,8 @@ class Draw(QWidget):
         #End draw
         qp.end()
 
-    def input(self):
-        self.data = Load(data1)
+    def input(self, path):
+        self.data = Load(path)
         self.data.readPol()
 
         for p in self.data.number():
@@ -119,10 +119,12 @@ class Draw(QWidget):
     #     self.__er = pol
 
     def clearAll(self):
-        self.__pol.clear()
         self.polRes.clear()
-        self.polLoad.clear()
         #self.__er.clear()
+
+    def clearLoadedData(self):
+        self.polLoad.clear()
+        self.__pol.clear()
 
     def polisEmpty(self):
         if self.__pol:
