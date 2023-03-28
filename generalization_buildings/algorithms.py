@@ -38,7 +38,7 @@ class Algorithms:
         return 0
 
 
-    def get2LinesAngle(self, p1:QPointF,p2:QPointF,p3:QPointF,p4:QPointF):
+    def get2LinesAngle(self, p1:QPointF, p2:QPointF, p3:QPointF, p4:QPointF):
         ux = p2.x() - p1.x()
         uy = p2.y() - p1.y()
         vx = p4.x() - p3.x()
@@ -382,3 +382,73 @@ class Algorithms:
         er_r = self.resizeRectangle(er, pol)
 
         return er_r
+
+    def longestEdge(self, pol: QPolygonF):
+        """
+        simplify polygon using longest edge method
+        :param pol:
+        :return:
+        """
+        #Initialize longest edge and sigma
+        len_max = 0
+        sigma = 0
+
+        for i in range(len(pol)):
+            # calculate length of segment
+            len = sqrt((pol[i].x()-pol[i+1].x())**2+(pol[i].y()-pol[i+1].y())**2)
+
+            # if length is larger than current max length --> assign max length
+            if len > len_max:
+                len_max = len
+
+                # compute sigma
+                sigma = atan2()   #dy_i, dx_i)
+
+            # Rotate building by sigma
+            pol_rot = self.rotate(pol, -sigma)
+
+            # Find minmaxbox over rotated building
+            mmb, area = self.minMaxBox(pol_rot)
+
+            # Rotate min-max box
+            er = self.rotate(mmb, sigma)
+
+            # Resize building
+            er_r = self.resizeRectangle(er, pol)
+
+        return er_r
+
+
+    def weightedBisector(self, pol: QPolygonF):
+        # simplifies polygon using weighted bisector
+
+        # Initialize longest edge and sigma
+        len_max1 = 0
+        len_max2 = 0
+        sigma1 = 0
+        sigma2 = 0
+
+        for i in range(len(pol)):
+            # calculate length of segment
+            len = sqrt((pol[i].x() - pol[i + 1].x()) ** 2 + (pol[i].y() - pol[i + 1].y()) ** 2)
+
+            # if length is larger than current max length --> assign max length
+            if len > len_max1:
+                # move len_max1 on to len_max2
+                len_max2 = len_max1
+
+                # assign len_max1
+                len_max1 = len
+
+                # compute sigmas
+                sigma1 = self.get2LinesAngle(pol[i].x(), pol[i] + 1, pol[i], pol[i+1])
+                sigma2 = self.get2LinesAngle()
+
+        #Main direction
+        sigma = (len_max1 * sigma1 + len_max2 * sigma2)/(len_max1 + len_max2)
+
+        # rotate polygon o sigma
+        # udělat minmaxbox
+        # resize rectangle
+
+        return
