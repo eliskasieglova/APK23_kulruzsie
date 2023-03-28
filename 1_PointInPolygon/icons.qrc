@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file>icons/clear.png</file>
-        <file>icons/exit.png</file>
-        <file>icons/open_file.png</file>
-        <file>icons/polygon.png</file>
-    </qresource>
-</RCC>
