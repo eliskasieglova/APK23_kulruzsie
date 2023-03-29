@@ -291,17 +291,17 @@ class Ui_MainWindow(object):
 
 
     def openCenter(self):
-        old = self.Canvas.polisEmpty()
+        old = self.Canvas.polLoadisEmpty()
         if old == True:
             self.Canvas.input(data1)
 
     def openVilla(self):
-        old = self.Canvas.polisEmpty()
+        old = self.Canvas.polLoadisEmpty()
         if old == True:
             self.Canvas.input(data3)
 
     def openUrban(self):
-        old = self.Canvas.polisEmpty()
+        old = self.Canvas.polLoadisEmpty()
         if old == True:
             self.Canvas.input(data2)
 
