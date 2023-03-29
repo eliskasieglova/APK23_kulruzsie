@@ -10,8 +10,6 @@ class Draw(QWidget):
 
         #Building, convex hull and enclosing rectangle
         self.__pol = QPolygonF()
-        #self.__ch = QPolygonF()
-        #self.__er = QPolygonF()
         self.polLoad = []
         self.polRes = []
 
@@ -80,28 +78,6 @@ class Draw(QWidget):
         for p in self.data.number():
             self.polLoad.append(self.data.getPol(p))
         self.repaint()
-    #
-    #     pols = Load()
-    #     # load data
-    #     pols.readPol(data1)
-    #     n = pols.number(data1)
-    #     # process all polygons
-    #     for pl in n:
-    #         self.__pol.clear()
-    #         xy = pols.xy(pl)
-    #
-    #         # process all vertices in analyzed polygon
-    #         for i in range(len(xy)):
-    #             # create point
-    #             p = QPointF((xy[i].x() - 14) * 1284 - 100, 400 - (xy[i].y() - 50) * 2000)
-    #
-    #             # append p to polygon
-    #             self.__pol.append(p)
-    #
-    #
-    #         self.__pols.append(QPolygonF(self.__pol))
-    #
-    #         self.repaint()
 
     def getPolygon(self):
         #Get polygon
