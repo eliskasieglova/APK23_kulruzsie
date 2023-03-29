@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bf5d5fd3-65a9-449b-8b5a-512e66070375" name="Changes" comment="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví">
+      <change beforePath="$PROJECT_DIR$/.idea/PointInPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PointInPolygon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointInPolygon.pyproject.user" beforeDir="false" afterPath="$PROJECT_DIR$/PointInPolygon.pyproject.user" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="62d016c8-8ecf-41e8-9b6b-49260e284a20" />
+        <option name="url" value="https://github.com/eliskasieglova/APK23_kulruzsie.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MjEzMp0dYhDbvR7j8sVvnXjF7O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Python.mainform">
+    <configuration name="load" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PointInPolygon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/load.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainform" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PointInPolygon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Users\avers\Documents\UK\MGR\Algoritmy\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.10 (Algoritmy)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainform.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.mainform" />
+        <item itemvalue="Python.load" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf5d5fd3-65a9-449b-8b5a-512e66070375" name="Changes" comment="" />
+      <created>1678272855200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678272855200</updated>
+    </task>
+    <task id="LOCAL-00001" summary="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN">
+      <created>1678570102213</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678570102213</updated>
+    </task>
+    <task id="LOCAL-00002" summary="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN">
+      <created>1678570151992</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678570151992</updated>
+    </task>
+    <task id="LOCAL-00003" summary="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví">
+      <created>1678572975208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678572975208</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN" />
+    <MESSAGE value="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví" />
+    <option name="LAST_COMMIT_MESSAGE" value="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví" />
+  </component>
+</project>
