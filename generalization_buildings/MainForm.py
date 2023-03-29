@@ -8,7 +8,6 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from draw import Draw
-from load import Load
 from algorithms import *
 
 data1 = 'data\\bud_centrum.shp'
@@ -185,6 +184,10 @@ class Ui_MainWindow(object):
     def createMAER(self):
         a = Algorithms()
 
+        old = self.Canvas.polLoadisEmpty()
+        if old == True:
+            return -1
+
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -202,6 +205,10 @@ class Ui_MainWindow(object):
     def createWA(self):
         a = Algorithms()
 
+        old = self.Canvas.polLoadisEmpty()
+        if old == True:
+            return -1
+
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -218,6 +225,10 @@ class Ui_MainWindow(object):
 
     def createCHGS(self):
         a = Algorithms()
+
+        old = self.Canvas.polLoadisEmpty()
+        if old == True:
+            return -1
 
         self.Canvas.polRes.clear()
 
@@ -248,6 +259,10 @@ class Ui_MainWindow(object):
     def simplifyLEClick (self):
         a = Algorithms()
 
+        old = self.Canvas.polLoadisEmpty()
+        if old == True:
+            return -1
+
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -264,6 +279,10 @@ class Ui_MainWindow(object):
 
     def simplifyWBClick(self):
         a = Algorithms()
+
+        old = self.Canvas.polLoadisEmpty()
+        if old == True:
+            return -1
 
         self.Canvas.polRes.clear()
 
@@ -291,19 +310,16 @@ class Ui_MainWindow(object):
 
 
     def openCenter(self):
-        old = self.Canvas.polLoadisEmpty()
-        if old == True:
-            self.Canvas.input(data1)
+        ui.Canvas.clearLoadedData()
+        self.Canvas.input(data1)
 
     def openVilla(self):
-        old = self.Canvas.polLoadisEmpty()
-        if old == True:
-            self.Canvas.input(data3)
+        ui.Canvas.clearLoadedData()
+        self.Canvas.input(data3)
 
     def openUrban(self):
-        old = self.Canvas.polLoadisEmpty()
-        if old == True:
-            self.Canvas.input(data2)
+        ui.Canvas.clearLoadedData()
+        self.Canvas.input(data2)
 
     def close(self):
         quit()
