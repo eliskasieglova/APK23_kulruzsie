@@ -142,7 +142,7 @@ class Ui_MainWindow(object):
         self.actionWall_Average.triggered.connect(self.createWA)
         self.actionGraham_Scan.triggered.connect(self.createCHGS)
         self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
-        self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
+        #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
         self.actionClearData.triggered.connect(self.clearData)
         self.actionClose.triggered.connect(self.close)

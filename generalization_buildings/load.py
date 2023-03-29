@@ -27,7 +27,7 @@ class Load:
             self.__c = 1045150
             self.__d = 2
 
-    polygony = []
+        self.polygony = []
 
     def readPol(self):
         g = [i for i in self.__data.geometry]
