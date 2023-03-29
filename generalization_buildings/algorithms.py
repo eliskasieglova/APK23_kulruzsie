@@ -8,36 +8,6 @@ class Algorithms:
     def __init__(self):
         pass
 
-
-    def getPointPolygonPositionR(self, q, pol):
-        k = 0
-        n = len(pol)
-
-        # proces all vertices
-        for i in range(n):
-            #reduce coordinate
-            xir = pol[i].x() - q.x()
-            yir = pol[i].y() - q.y()
-            xi1r = pol[(i+1)%n].x() - q.x()
-            yi1r = pol[(i+1)%n].y() - q.y()
-
-            #Suitable segment
-            if (yi1r > 0) and (yir <= 0) or (yir >0 ) and (yi1r <=0):
-
-                #compute intersection
-                xm = (xi1r*yir - xir*yi1r)/(yi1r - yir)
-
-                # increment amount of intersections
-                if xm > 0:
-                    k += 1
-
-        # point is inside
-        if k % 2 == 1:
-            return 1
-
-        return 0
-
-
     def get2LinesAngle(self, p1:QPointF,p2:QPointF,p3:QPointF,p4:QPointF):
         ux = p2.x() - p1.x()
         uy = p2.y() - p1.y()
