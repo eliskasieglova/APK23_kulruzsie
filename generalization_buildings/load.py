@@ -10,7 +10,7 @@ class Load:
 
     def __init__(self, path):
         self.__data = gpd.read_file(path)
-        '''
+
         if path == 'data\\bud_vily.shp':
             self.__a = 732670
             self.__b = 2.4
@@ -26,8 +26,8 @@ class Load:
             self.__b = 2
             self.__c = 1045150
             self.__d = 2
-            '''
-    polygony = []
+
+        self.polygony = []
 
     def readPol(self):
         g = [i for i in self.__data.geometry]

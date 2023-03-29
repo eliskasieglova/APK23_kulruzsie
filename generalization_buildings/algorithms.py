@@ -48,12 +48,12 @@ class Algorithms:
         dp = ux*vx + uy*vy
 
         #Norms
-        nu = (ux**2 + uy**2)**0.5
-        nv = (vx**2 + vy**2)**0.5
+        nu = (ux ** 2 + uy ** 2) ** 0.5
+        nv = (vx ** 2 + vy ** 2) ** 0.5
 
-	#Correct argument to the interval [-1,1]
-        arg = dp/(nu*nv)
-        arg = max(min(arg,  1), -1 )
+        #Correct argument to the interval [-1,1]
+        arg = dp / (nu * nv)
+        arg = max(min(arg, 1), -1)
 
         return acos(arg)
 
@@ -382,3 +382,113 @@ class Algorithms:
         er_r = self.resizeRectangle(er, pol)
 
         return er_r
+
+    def longestEdge(self, pol: QPolygonF):
+        # Create enclosing rectangle using longest edge
+
+        # Initialize longest edge and sigma
+        len_max = 0
+        sigma = 0
+
+        # Process all edges
+        n = len(pol)
+        for i in range(n):
+            # calculate length of segment
+            x1 = pol[i].x()
+            y1 = pol[i].y()
+            x2 = pol[(i + 1) % n].x()
+            y2 = pol[(i + 1) % n].y()
+
+            length = sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+            # If length is larger than current max length --> assign max length
+            if length > len_max:
+                len_max = length
+
+                # compute sigma
+                dx = pol[i].x() - pol[(i + 1) % n].x()
+                dy = pol[i].y() - pol[(i + 1) % n].y()
+                sigma = atan2(dy, dx)
+
+            # Rotate building by sigma
+            pol_rot = self.rotate(pol, -sigma)
+
+            # Find minmaxbox over rotated building
+            mmb, area = self.minMaxBox(pol_rot)
+
+            # Rotate min-max box
+            er = self.rotate(mmb, sigma)
+
+            # Resize building
+            er_r = self.resizeRectangle(er, pol)
+
+        return er_r
+
+'''
+    def weightedBisector(self, pol: QPolygonF):
+        # Simplifies polygon using Weighted Bisector
+
+        # Initialize longest edges and sigmas
+        len_max1 = 0
+        len_max2 = 0
+        sigma1 = 0
+        sigma2 = 0
+
+        # Remember edge points
+        e1p1 = 0
+        e1p2 = 0
+        e2p1 = 0
+        e2p2 = 0
+
+        n = len(pol)
+
+        for i in range(n):
+            # Find longest diagonal for point i
+            if (pol[i] != e1p1) & (pol[i] != e1p2) & (pol[i] != e2p1) & (pol[i] != e2p2) & (pol[i] != e1p1):
+
+                d_length = 0
+                idx_d = 0
+                for j in range(n):
+                    # calculate length of segment
+                    if pol[j] != pol[i]:
+                        length = sqrt((pol[i].x() - pol[j].x()) ** 2 + (pol[i].y() - pol[j].y()) ** 2)
+
+                        # Find longest diagonal
+                        if length > d_length:
+                            d_length = length
+                            idx_d = j #index druhyho bodu
+
+                # Update max length
+                if d_length > len_max2:
+                    len_max2 = len_max1
+                    len_max1 = d_length
+
+                    e2p1 = e1p1
+                    e2p2 = e1p2
+                    e1p1 = pol[i]
+                    e1p2 = pol[idx_d]
+
+                    # Compute sigma
+                    dx = pol[idx_d].x() - pol[i].x()
+                    dy = pol[idx_d].y() - pol[i].y()
+                    sigma = atan2(dy, dx)
+
+                    sigma2 = sigma1
+                    sigma1 = sigma
+
+        #Main direction
+        sigma = (len_max1 * sigma1 + len_max2 * sigma2)/(len_max1 + len_max2)
+
+        # Rotate building by sigma
+        pol_rot = self.rotate(pol, -sigma)
+
+        # Find minmaxbox over rotated building
+        mmb, area = self.minMaxBox(pol_rot)
+
+        # Rotate min-max box
+        er = self.rotate(mmb, sigma)
+
+        # Resize building
+        er_r = self.resizeRectangle(er, pol)
+
+        return er_r'''

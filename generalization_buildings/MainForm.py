@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
         self.actionMinimum_Area_Enclosing_Rectangle.triggered.connect(self.createMAER)
         self.actionWall_Average.triggered.connect(self.createWA)
         self.actionGraham_Scan.triggered.connect(self.createCHGS)
-        #self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
+        self.actionLongest_Edge.triggered.connect(self.simplifyLEClick)
         #self.actionWeighted_Bisector.triggered.connect(self.simplifyWBClick)
         self.actionClear.triggered.connect(self.clearClick)
         self.actionClearData.triggered.connect(self.clearData)
@@ -245,17 +245,39 @@ class Ui_MainWindow(object):
     #     ui.Canvas.setER(er)
     #     ui.Canvas.repaint()
 
-    # def simplifyWAClick (self):
-    #     #Get polygon
-    #     pol = ui.Canvas.getPolygon()
-    #
-    #     #Create convex hull
-    #     a = Algorithms()
-    #     er = a.wallAverage(pol)
-    #
-    #     #Set results and repaint
-    #     ui.Canvas.setER(er)
-    #     ui.Canvas.repaint()
+    def simplifyLEClick (self):
+        a = Algorithms()
+
+        self.Canvas.polRes.clear()
+
+        if not self.Canvas.polisEmpty():
+            pol = a.longestEdge(self.Canvas.getPolygon())
+
+            self.Canvas.polRes.append(pol)
+
+        for p in self.Canvas.data.number():
+            pol = a.longestEdge(self.Canvas.data.getPol(p))
+
+            self.Canvas.polRes.append(pol)
+
+        self.Canvas.repaint()
+
+    def simplifyWBClick(self):
+        a = Algorithms()
+
+        self.Canvas.polRes.clear()
+
+        if not self.Canvas.polisEmpty():
+            pol = a.weightedBisector(self.Canvas.getPolygon())
+
+            self.Canvas.polRes.append(pol)
+
+        for p in self.Canvas.data.number():
+            pol = a.weightedBisector(self.Canvas.data.getPol(p))
+
+            self.Canvas.polRes.append(pol)
+
+        self.Canvas.repaint()
 
     def clearClick(self):
         #Clear all

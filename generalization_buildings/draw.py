@@ -3,10 +3,6 @@ from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 from load import Load
 
-data1 = 'data\\bud_centrum.shp'
-data2 = 'data\\bud_sidliste.shp'
-data3 = 'data\\bud_vily.shp'
-
 class Draw(QWidget):
 
     def __init__(self, *args, **kwargs):

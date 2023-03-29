@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a4a2392-f021-4574-8434-6f4b7970a1fd" name="Changes" comment="true" />
+    <list default="true" id="bf5d5fd3-65a9-449b-8b5a-512e66070375" name="Changes" comment="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví">
+      <change beforePath="$PROJECT_DIR$/.idea/PointInPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PointInPolygon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PointInPolygon.pyproject.user" beforeDir="false" afterPath="$PROJECT_DIR$/PointInPolygon.pyproject.user" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,12 +19,13 @@
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="d35b0444-cfa2-433c-8657-e3b582368ce1" />
+        <option name="accountId" value="62d016c8-8ecf-41e8-9b6b-49260e284a20" />
         <option name="url" value="https://github.com/eliskasieglova/APK23_kulruzsie.git" />
       </UrlAndAccount>
     </option>
@@ -28,7 +33,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2MgmSsmwybj1CsSqJUSiWoNEkQ6" />
+  <component name="ProjectId" id="2MjEzMp0dYhDbvR7j8sVvnXjF7O" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,24 +41,41 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\home\adam\GitHub\APK23_kulruzsie\PointInPolygon" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="mainform" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.mainform">
+    <configuration name="load" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PointInPolygon" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\avk\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/load.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainform" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PointInPolygon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Users\avers\Documents\UK\MGR\Algoritmy\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.10 (Algoritmy)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -67,137 +89,60 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.mainform" />
+        <item itemvalue="Python.load" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1a4a2392-f021-4574-8434-6f4b7970a1fd" name="Changes" comment="" />
-      <created>1678197606370</created>
+      <changelist id="bf5d5fd3-65a9-449b-8b5a-512e66070375" name="Changes" comment="" />
+      <created>1678272855200</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1678197606370</updated>
+      <updated>1678272855200</updated>
     </task>
-    <task id="LOCAL-00001" summary="a">
-      <created>1678198007758</created>
+    <task id="LOCAL-00001" summary="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN">
+      <created>1678570102213</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1678198007758</updated>
+      <updated>1678570102213</updated>
     </task>
-    <task id="LOCAL-00002" summary="function - clear">
-      <created>1678198329713</created>
+    <task id="LOCAL-00002" summary="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN">
+      <created>1678570151992</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1678198329713</updated>
+      <updated>1678570151992</updated>
     </task>
-    <task id="LOCAL-00003" summary="functions and icons">
-      <created>1678200040149</created>
+    <task id="LOCAL-00003" summary="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví">
+      <created>1678572975208</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1678200040149</updated>
+      <updated>1678572975208</updated>
     </task>
-    <task id="LOCAL-00004" summary="functions and icons">
-      <created>1678200057885</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1678200057885</updated>
-    </task>
-    <task id="LOCAL-00005" summary="wn">
-      <created>1678265337571</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1678265337571</updated>
-    </task>
-    <task id="LOCAL-00006" summary="true">
-      <created>1678273474082</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1678273474082</updated>
-    </task>
-    <task id="LOCAL-00007" summary="true">
-      <created>1678273975400</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1678273975400</updated>
-    </task>
-    <task id="LOCAL-00008" summary="true">
-      <created>1678375371924</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1678375371924</updated>
-    </task>
-    <task id="LOCAL-00009" summary="true">
-      <created>1678462746324</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1678462746324</updated>
-    </task>
-    <task id="LOCAL-00010" summary="true">
-      <created>1678474642567</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1678474642567</updated>
-    </task>
-    <task id="LOCAL-00011" summary="true">
-      <created>1678476794561</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1678476794561</updated>
-    </task>
-    <task id="LOCAL-00012" summary="true">
-      <created>1678480825350</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1678480825350</updated>
-    </task>
-    <task id="LOCAL-00013" summary="true">
-      <created>1678481080523</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1678481080523</updated>
-    </task>
-    <task id="LOCAL-00014" summary="true">
-      <created>1678716453816</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1678716453816</updated>
-    </task>
-    <task id="LOCAL-00015" summary="true">
-      <created>1678719994899</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1678719994899</updated>
-    </task>
-    <task id="LOCAL-00016" summary="true">
-      <created>1678720801589</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1678720801589</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="a" />
-    <MESSAGE value="function - clear" />
-    <MESSAGE value="functions and icons" />
-    <MESSAGE value="wn" />
-    <MESSAGE value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="přidání komentářů&#10;upravení řešení případu, kdy je hrana horizontální ve WN" />
+    <MESSAGE value="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví" />
+    <option name="LAST_COMMIT_MESSAGE" value="- přidání komentářů&#10;- upravení řešení případu, kdy je hrana horizontální ve WN&#10;- zajištění, aby se nemuselo zapínat kreslení bodu a kreslil se rovnou&#10;- když analyzuju druhý polygon, první vybarvený se zase odbarví" />
   </component>
 </project>
