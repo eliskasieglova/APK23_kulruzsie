@@ -189,7 +189,6 @@ class Ui_MainWindow(object):
             return -1
 
         ui.Canvas.clearAll()
-        ui.Canvas.repaint()
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -212,7 +211,6 @@ class Ui_MainWindow(object):
             return -1
 
         ui.Canvas.clearAll()
-        ui.Canvas.repaint()
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -235,7 +233,6 @@ class Ui_MainWindow(object):
             return -1
 
         ui.Canvas.clearAll()
-        ui.Canvas.repaint()
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -270,7 +267,6 @@ class Ui_MainWindow(object):
             return -1
 
         ui.Canvas.clearAll()
-        ui.Canvas.repaint()
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
@@ -293,7 +289,6 @@ class Ui_MainWindow(object):
             return -1
 
         ui.Canvas.clearAll()
-        ui.Canvas.repaint()
         self.Canvas.polRes.clear()
 
         if not self.Canvas.polisEmpty():
